@@ -1,53 +1,75 @@
 import React from "react";
 import "./styles.scss";
-import Indicator from "../Indicator";
-import SubIndicator from "../SubIndicator";
-import { Circle, Widget } from "./styles";
+// import Indicator from "../Indicator";
+// import SubIndicator from "../SubIndicator";
+// import { Circle, Widget } from "./styles";
+import Circle from "../Circle";
+import Item from "../Item";
+import util from "../../util/util";
 
 type Props = {};
 
 const hours = Array.from(Array(12).keys());
 const minutes = hours.map(() => [0, 1, 2, 3, 4]).flat(1);
+
+const circleSize = 20;
+console.warn(util.polarToCartesian(5, 0));
+console.warn(util.polarToCartesian(5, 45));
+console.warn(util.polarToCartesian(5, 90));
+console.warn(util.polarToCartesian(5, 180));
+
 const WatchFace: React.FC<Props> = (props: Props) => {
   // console.warn("mainPositions", mainPositions);
+
   return (
-    // <div className="container">
-    //   <div className="content">Hello I am A Circle</div>
-    // </div>
-    // <div className="container">
-    //   {/* <div className="main-indicator-circle-container">
-    //     <Indicator pos={0} />
-    //     <Indicator pos={1} />
-    //     <Indicator pos={2} />
-    //     <Indicator pos={3} />
-    //     <Indicator pos={4} />
-    //     <Indicator pos={5} />
-    //     <Indicator pos={6} />
-    //     <Indicator pos={7} />
-    //     <Indicator pos={8} />
-    //     <Indicator pos={9} />
-    //     <Indicator pos={10} />
-    //     <Indicator pos={11} />
-    //   </div> */}
-    //   {/* <div className="main-indicator-circle-container">
-    //     {hours.map((key) => (
-    //       <Indicator pos={key} />
-    //     ))}
-    //   </div>
-    //   <div className="sub-indicator-circle-container">
-    //     {minutes.map((key) => (
-    //       <Indicator pos={key} />
-    //     ))}
-    //   </div> */}
-    //   <div className="container">
-    //     <Widget coordinates={{ angle: 0, radius: 20 }} size="1em" />
-    //   </div>
-    // </div>
-    <Circle radius="20em">
-      <Widget coordinates={{ angle: 0, radius: 20 }} size="1em">
-        99
-      </Widget>
-    </Circle>
+    <div className="container">
+      <Circle radius={circleSize} style={{ backgroundColor: "#EBA9BA" }}>
+        <Item
+          key="96"
+          circleRadius={circleSize}
+          rotation={0}
+          width={1}
+          height={10}
+          style={{ backgroundColor: "blue" }}
+          coordinates={{ radius: 10, angle: 0 }}
+        ></Item>
+        <Item
+          key="93"
+          circleRadius={circleSize}
+          rotation={45}
+          width={1}
+          height={8}
+          style={{ backgroundColor: "green" }}
+          coordinates={{ radius: 8, angle: 45 }}
+        ></Item>
+        <Item
+          key="94"
+          circleRadius={circleSize}
+          rotation={0}
+          width={2}
+          height={2}
+          style={{ backgroundColor: "red" }}
+          coordinates={{ radius: 18, angle: 30 }}
+        >
+          11
+        </Item>
+        <Item
+          key="94"
+          circleRadius={circleSize}
+          rotation={0}
+          width={2}
+          height={2}
+          style={{
+            backgroundColor: "purple",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          99
+        </Item>
+      </Circle>
+    </div>
   );
 };
 

@@ -1,5 +1,17 @@
 $main-size: 22em;
 
+// .container {
+//   display: flex;
+//   background-color: #efefef;
+//   padding: 0;
+//   width: $main-size;
+//   height: $main-size;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   border-radius: calc(#{$main-size} / 2);
+// }
+
 .container {
   display: flex;
   background-color: #efefef;
@@ -9,7 +21,7 @@ $main-size: 22em;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  border-radius: calc(#{$main-size} / 2);
+  // border-radius: calc(#{$main-size} / 2);
 }
 
 // .content {
