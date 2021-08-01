@@ -23,6 +23,8 @@ const ItemContainer = styled.div<ContainerProps>`
   transform: translateX(${(props) => props.translateX})
     translateY(${(props) => props.translateY})
     rotate(${(props) => props.rotation});
+
+  transition: transform 0.15s ease-in-out;
 `;
 
 export { ItemContainer };
