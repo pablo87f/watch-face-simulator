@@ -1,12 +1,11 @@
+import React from "react";
 import { CSSObject } from "styled-components";
 import { WidgetProps } from "../Widget";
 import { CircleContainer } from "./style";
 
 export type CircleProps = {
   radius: number;
-  children?:
-    | React.ReactElement<WidgetProps>[]
-    | React.ReactElement<WidgetProps>;
+  children?: React.ReactNode;
   style: CSSObject;
 };
 
