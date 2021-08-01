@@ -5,7 +5,7 @@ type ContainerProps = {
   radiusUnit?: string;
 };
 
-const Container = styled.div<ContainerProps>`
+const CircleContainer = styled.div<ContainerProps>`
   position: relative;
   width: ${(props) => `${props.radius}${props.radiusUnit ?? "em"}`};
   height: ${(props) => `${props.radius}${props.radiusUnit ?? "em"}`};
@@ -16,4 +16,4 @@ const Container = styled.div<ContainerProps>`
   border-radius: 50%;
 `;
 
-export { Container };
+export { CircleContainer };

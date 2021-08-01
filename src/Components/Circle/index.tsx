@@ -1,10 +1,12 @@
 import { CSSObject } from "styled-components";
-import { ItemProps } from "../Item";
-import { Container } from "./style";
+import { WidgetProps } from "../Widget";
+import { CircleContainer } from "./style";
 
-type CircleProps = {
+export type CircleProps = {
   radius: number;
-  children?: React.ReactElement<ItemProps>[] | React.ReactElement<ItemProps>;
+  children?:
+    | React.ReactElement<WidgetProps>[]
+    | React.ReactElement<WidgetProps>;
   style: CSSObject;
 };
 
@@ -14,9 +16,9 @@ const Circle: React.FC<CircleProps> = ({
   style,
 }: CircleProps) => {
   return (
-    <Container radius={radius} style={style}>
+    <CircleContainer radius={radius} style={style}>
       {children}
-    </Container>
+    </CircleContainer>
   );
 };
 

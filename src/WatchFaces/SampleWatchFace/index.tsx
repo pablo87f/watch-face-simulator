@@ -1,85 +1,24 @@
-import {
-  getDay,
-  getHours,
-  getMinutes,
-  getMonth,
-  getSeconds,
-  getYear,
-} from "date-fns";
-import React, { useCallback, useState } from "react";
-import { useInterval } from "../../hooks";
-import util from "../../util/util";
-import Circle from "../Circle";
-import Item from "../Item";
-import "./styles.scss";
-type Props = {};
+import React from "react";
+import Circle from "../../Components/Circle";
+import Widget from "../../Components/Widget";
+import { useWatch } from "../../hooks";
+import "./style.scss";
 
-type DateTimeInfo = {
-  year: number;
-  month: number;
-  day: number;
-  hour: number;
-  minute: number;
-  second: number;
-};
+type Props = {};
 
 const circleSize = 20;
 
-function angleClock(hour: number, minutes: number) {
-  const minuteAngle = minutes * 6;
-  const hourAngle = hour * 30 + minutes * 0.5;
-  const angle = Math.abs(hourAngle - minuteAngle);
-  return Math.min(angle, 360 - angle);
-}
-
-function getTimeInfo(date: Date): DateTimeInfo {
-  return {
-    year: getYear(date),
-    month: getMonth(date),
-    day: getDay(date),
-    hour: getHours(date),
-    minute: getMinutes(date),
-    second: getSeconds(date),
-  };
-}
-
 const WatchFace: React.FC<Props> = (props: Props) => {
-  const startTimeInfo = getTimeInfo(new Date());
-
-  const {
-    second: startSecond,
-    minute: startMinute,
-    hour: startHour,
-  } = startTimeInfo;
-  const [timeInfo, setTimeInfo] = useState<DateTimeInfo>(startTimeInfo);
-
-  const [totalHours, setTotalHours] = useState(startHour);
-  const [totalMinutes, setTotalMinutes] = useState(startMinute);
-  const [totalSeconds, setTotalSeconds] = useState(startSecond);
-
-  const updateTime = useCallback(() => {
-    const timeInfo = getTimeInfo(new Date());
-    setTimeInfo(timeInfo);
-
-    const { hour, minute, second } = timeInfo;
-
-    setTotalSeconds((prevTotalSeconds) => prevTotalSeconds + 1);
-    if (totalSeconds > 0 && second === 0) {
-      setTotalMinutes((prevTotalMinutes) => prevTotalMinutes + 1);
-    }
-    if (totalMinutes > 0 && minute === 0 && second === 0) {
-      setTotalHours((prevTotalMinutes) => prevTotalMinutes + 1);
-    }
-  }, []);
-
-  useInterval(updateTime, 1000);
+  const { timeInfo, handAngles } = useWatch();
 
   const { hour, minute, second } = timeInfo;
+  const { hourAngle, minuteAngle, secondAngle } = handAngles;
+
   return (
     <>
-      <div className="container">
+      <div className="container" style={{ backgroundColor: "#2E2E2E" }}>
         <Circle radius={circleSize} style={{ backgroundColor: "#EBA9BA" }}>
-          <Item
+          <Widget
             key="0"
             circleRadius={circleSize}
             rotation={0}
@@ -93,8 +32,8 @@ const WatchFace: React.FC<Props> = (props: Props) => {
             coordinates={{ radius: 18, angle: 0 }}
           >
             12
-          </Item>
-          <Item
+          </Widget>
+          <Widget
             key="1"
             circleRadius={circleSize}
             rotation={0}
@@ -108,8 +47,8 @@ const WatchFace: React.FC<Props> = (props: Props) => {
             coordinates={{ radius: 18, angle: 30 }}
           >
             1
-          </Item>
-          <Item
+          </Widget>
+          <Widget
             key="2"
             circleRadius={circleSize}
             rotation={0}
@@ -123,8 +62,8 @@ const WatchFace: React.FC<Props> = (props: Props) => {
             coordinates={{ radius: 18, angle: 60 }}
           >
             2
-          </Item>
-          <Item
+          </Widget>
+          <Widget
             key="3"
             circleRadius={circleSize}
             rotation={0}
@@ -138,8 +77,8 @@ const WatchFace: React.FC<Props> = (props: Props) => {
             coordinates={{ radius: 18, angle: 90 }}
           >
             3
-          </Item>
-          <Item
+          </Widget>
+          <Widget
             key="4"
             circleRadius={circleSize}
             rotation={0}
@@ -153,8 +92,8 @@ const WatchFace: React.FC<Props> = (props: Props) => {
             coordinates={{ radius: 18, angle: 120 }}
           >
             4
-          </Item>
-          <Item
+          </Widget>
+          <Widget
             key="5"
             circleRadius={circleSize}
             rotation={0}
@@ -168,8 +107,8 @@ const WatchFace: React.FC<Props> = (props: Props) => {
             coordinates={{ radius: 18, angle: 150 }}
           >
             5
-          </Item>
-          <Item
+          </Widget>
+          <Widget
             key="6"
             circleRadius={circleSize}
             rotation={0}
@@ -183,8 +122,8 @@ const WatchFace: React.FC<Props> = (props: Props) => {
             coordinates={{ radius: 18, angle: 180 }}
           >
             6
-          </Item>
-          <Item
+          </Widget>
+          <Widget
             key="7"
             circleRadius={circleSize}
             rotation={0}
@@ -198,9 +137,9 @@ const WatchFace: React.FC<Props> = (props: Props) => {
             coordinates={{ radius: 18, angle: 210 }}
           >
             7
-          </Item>
+          </Widget>
 
-          <Item
+          <Widget
             key="8"
             circleRadius={circleSize}
             rotation={0}
@@ -214,9 +153,9 @@ const WatchFace: React.FC<Props> = (props: Props) => {
             coordinates={{ radius: 18, angle: 240 }}
           >
             8
-          </Item>
+          </Widget>
 
-          <Item
+          <Widget
             key="9"
             circleRadius={circleSize}
             rotation={0}
@@ -230,9 +169,9 @@ const WatchFace: React.FC<Props> = (props: Props) => {
             coordinates={{ radius: 18, angle: 270 }}
           >
             9
-          </Item>
+          </Widget>
 
-          <Item
+          <Widget
             key="10"
             circleRadius={circleSize}
             rotation={0}
@@ -246,9 +185,9 @@ const WatchFace: React.FC<Props> = (props: Props) => {
             coordinates={{ radius: 18, angle: 300 }}
           >
             10
-          </Item>
+          </Widget>
 
-          <Item
+          <Widget
             key="11"
             circleRadius={circleSize}
             rotation={0}
@@ -262,45 +201,42 @@ const WatchFace: React.FC<Props> = (props: Props) => {
             coordinates={{ radius: 18, angle: 330 }}
           >
             11
-          </Item>
-          <Item
+          </Widget>
+          <Widget
             key="minute"
             circleRadius={circleSize}
-            rotation={totalMinutes * 6}
+            rotation={minuteAngle}
             width={0.2}
             height={8}
             style={{ backgroundColor: "blue" }}
-            coordinates={{ radius: 8, angle: totalMinutes * 6 }}
-          ></Item>
-          <Item
+            coordinates={{ radius: 8, angle: minuteAngle }}
+          ></Widget>
+          <Widget
             key="hour"
             circleRadius={circleSize}
-            rotation={totalHours * 30 + minute * 0.5}
+            rotation={hourAngle}
             width={0.3}
             height={6}
             style={{ backgroundColor: "green" }}
             coordinates={{
               radius: 6,
-              angle: totalHours * 30 + minute * 0.5,
+              angle: hourAngle,
             }}
-          ></Item>
-          <Item
+          ></Widget>
+          <Widget
             key="second"
             circleRadius={circleSize}
-            rotation={totalSeconds * 6}
+            rotation={secondAngle}
             width={0.1}
             height={9}
             style={{ backgroundColor: "red" }}
-            coordinates={{ radius: 8, angle: totalSeconds * 6 }}
-          ></Item>
+            coordinates={{ radius: 8, angle: secondAngle }}
+          ></Widget>
         </Circle>
       </div>
       <div>
         {hour}:{minute}:{second}
       </div>
-      <div>{totalSeconds}</div>
-      <div>{totalMinutes}</div>
-      <div>{totalHours}</div>
     </>
   );
 };

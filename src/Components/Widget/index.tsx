@@ -1,14 +1,13 @@
-import React, { CSSProperties, useState } from "react";
-import { ItemContainer } from "./style";
-
+import React, { CSSProperties } from "react";
 import util from "../../util/util";
+import { WidgetContainer } from "./style";
 
 type PolarCoordinates = {
   radius: number;
   angle: number;
 };
 
-export type ItemProps = {
+export type WidgetProps = {
   width: number;
   height: number;
   children?: React.ReactNode;
@@ -20,7 +19,7 @@ export type ItemProps = {
 
 const defaultUnit = "em";
 
-const Item: React.FC<ItemProps> = ({
+const Widget: React.FC<WidgetProps> = ({
   width,
   height,
   children,
@@ -28,7 +27,7 @@ const Item: React.FC<ItemProps> = ({
   rotation,
   style,
   coordinates = { radius: 0, angle: 0 },
-}: ItemProps) => {
+}: WidgetProps) => {
   const xCenter = width / 2;
   const yCenter = height / 2;
 
@@ -39,7 +38,7 @@ const Item: React.FC<ItemProps> = ({
   const { x, y } = util.polarToCartesian(radius / 2, angle - 90);
 
   return (
-    <ItemContainer
+    <WidgetContainer
       top={top}
       left={left}
       width={`${width}${defaultUnit}`}
@@ -50,8 +49,8 @@ const Item: React.FC<ItemProps> = ({
       style={style}
     >
       {children}
-    </ItemContainer>
+    </WidgetContainer>
   );
 };
 
-export default Item;
+export default Widget;

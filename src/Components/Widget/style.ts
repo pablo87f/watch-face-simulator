@@ -10,7 +10,7 @@ type ContainerProps = {
   translateY?: string;
 };
 
-const ItemContainer = styled.div<ContainerProps>`
+const WidgetContainer = styled.div<ContainerProps>`
   display: block;
   position: absolute;
   top: ${(props) => props.top};
@@ -27,4 +27,4 @@ const ItemContainer = styled.div<ContainerProps>`
   transition: transform 0.15s ease-in-out;
 `;
 
-export { ItemContainer };
+export { WidgetContainer };
