@@ -4,12 +4,18 @@ import Widget from "@Components/Widget";
 import { useWatch } from "../../hooks";
 import "./style.scss";
 import HourIndicator from "./HourIndicator";
+import MinuteHand from "./MinuteHand";
+import HourHand from "./HourHand";
+import SecondHand from "./SecondHand";
+import MinuteIndicator from "./MinuteIndicator";
+import CenterBall from "./CenterBall";
 
 type Props = {};
 
 const circleSize = 20;
 
 const watchHours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const watchMinutes = Array.from(Array(60).keys());
 
 const WatchFace: React.FC<Props> = (props: Props) => {
   const { timeInfo, handAngles } = useWatch();
@@ -20,42 +26,29 @@ const WatchFace: React.FC<Props> = (props: Props) => {
   return (
     <>
       <div className="container" style={{ backgroundColor: "#2E2E2E" }}>
-        <Circle radius={circleSize} style={{ backgroundColor: "#EBA9BA" }}>
+        <Circle radius={circleSize} style={{ backgroundColor: "#2E2E2E" }}>
+          {watchMinutes.map((wMinute) => (
+            <MinuteIndicator
+              minute={wMinute}
+              circleRadius={circleSize}
+              horizontal={false}
+            >
+              .
+            </MinuteIndicator>
+          ))}
           {watchHours.map((wHour) => (
-            <HourIndicator hour={wHour} circleRadius={circleSize}>
-              {wHour === 0 ? "12" : `${wHour}`}
+            <HourIndicator
+              hour={wHour}
+              circleRadius={circleSize}
+              horizontal={false}
+            >
+              |
             </HourIndicator>
           ))}
-          <Widget
-            key="minute"
-            circleRadius={circleSize}
-            rotation={minuteAngle}
-            width={0.2}
-            height={8}
-            style={{ backgroundColor: "blue" }}
-            coordinates={{ radius: 8, angle: minuteAngle }}
-          ></Widget>
-          <Widget
-            key="hour"
-            circleRadius={circleSize}
-            rotation={hourAngle}
-            width={0.3}
-            height={6}
-            style={{ backgroundColor: "green" }}
-            coordinates={{
-              radius: 6,
-              angle: hourAngle,
-            }}
-          ></Widget>
-          <Widget
-            key="second"
-            circleRadius={circleSize}
-            rotation={secondAngle}
-            width={0.1}
-            height={9}
-            style={{ backgroundColor: "red" }}
-            coordinates={{ radius: 8, angle: secondAngle }}
-          ></Widget>
+          <MinuteHand circleRadius={circleSize} minuteAngle={minuteAngle} />
+          <HourHand circleRadius={circleSize} hourAngle={hourAngle} />
+          <SecondHand circleRadius={circleSize} secondAngle={secondAngle} />
+          <CenterBall circleRadius={circleSize} />
         </Circle>
       </div>
       <div>

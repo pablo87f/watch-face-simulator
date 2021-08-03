@@ -1,36 +1,36 @@
 import Widget from "@Components/Widget";
 
 type Props = {
-  hour: number;
+  minute: number;
   circleRadius: number;
   children: React.ReactNode;
   horizontal?: boolean;
 };
 
-const HourIndicator: React.FC<Props> = ({
+const MinuteIndicator: React.FC<Props> = ({
   circleRadius,
-  hour,
+  minute,
   children,
   horizontal = true,
 }: Props) => {
   return (
     <Widget
-      key={`hour-${hour}`}
+      key={`minute-${minute}`}
       circleRadius={circleRadius}
-      rotation={horizontal ? 0 : hour * 30}
-      width={2}
-      height={2}
+      rotation={horizontal ? 0 : minute * 6}
+      width={1}
+      height={1}
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         color: "white",
       }}
-      coordinates={{ radius: circleRadius - 2, angle: hour * 30 }}
+      coordinates={{ radius: circleRadius - 1, angle: minute * 6 }}
     >
-      {children}
+      <div style={{ fontSize: "0.5em" }}>{children}</div>
     </Widget>
   );
 };
 
-export default HourIndicator;
+export default MinuteIndicator;
