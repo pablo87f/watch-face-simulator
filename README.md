@@ -1,6 +1,6 @@
 # Watch face simulator
 
-A apliccation that simulate a sample of analog and digital watches made with ReactJS inspired by smartwatch watch faces
+A application that simulate a sample of analog and digital watches made with ReactJS inspired by smartwatch watch faces
 
 ## Starting
 
