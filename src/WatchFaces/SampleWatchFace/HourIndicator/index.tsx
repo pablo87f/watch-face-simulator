@@ -3,14 +3,14 @@ import Widget from "@Components/Widget";
 type Props = {
   hour: number;
   circleRadius: number;
-  label: string;
+  children: React.ReactNode;
   horizontal?: boolean;
 };
 
 const HourIndicator: React.FC<Props> = ({
   circleRadius,
   hour,
-  label,
+  children,
   horizontal = true,
 }: Props) => {
   return (
@@ -27,7 +27,7 @@ const HourIndicator: React.FC<Props> = ({
       }}
       coordinates={{ radius: circleRadius - 2, angle: hour * 30 }}
     >
-      {label}
+      {children}
     </Widget>
   );
 };

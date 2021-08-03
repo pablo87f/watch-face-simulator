@@ -1,6 +1,5 @@
 import React from "react";
 import { CSSObject } from "styled-components";
-import { WidgetProps } from "../Widget";
 import { CircleContainer } from "./style";
 
 export type CircleProps = {

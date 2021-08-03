@@ -22,11 +22,9 @@ const WatchFace: React.FC<Props> = (props: Props) => {
       <div className="container" style={{ backgroundColor: "#2E2E2E" }}>
         <Circle radius={circleSize} style={{ backgroundColor: "#EBA9BA" }}>
           {watchHours.map((wHour) => (
-            <HourIndicator
-              hour={wHour}
-              circleRadius={circleSize}
-              label={wHour === 0 ? "12" : `${wHour}`}
-            />
+            <HourIndicator hour={wHour} circleRadius={circleSize}>
+              {wHour === 0 ? "12" : `${wHour}`}
+            </HourIndicator>
           ))}
           <Widget
             key="minute"
