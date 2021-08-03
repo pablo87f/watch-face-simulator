@@ -34,7 +34,7 @@ $ yarn start
 
 ### Accessing the application
 
-- Acesse the link: http://locahotst:3000
+- Acesse the link: http://localhost:3000
 
 ## Built with
 
