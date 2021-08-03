@@ -41,5 +41,4 @@ $ yarn start
 ReactJS and Typescript
 
 ## Licença
-
-Esse projeto está sob a MIT License
+MIT License
