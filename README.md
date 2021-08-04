@@ -1,6 +1,6 @@
-# Watch face
+# Watch face simulator
 
-A sample of analog and digital watches made with ReactJS inspired by smartwatch watch faces
+An application that simulate a sample of analog and digital watches made with ReactJS inspired by smartwatch watch faces
 
 ## Starting
 
@@ -34,12 +34,11 @@ $ yarn start
 
 ### Accessing the application
 
-- Acesse the link: http://locahotst:3000
+- Acesse the link: http://localhost:3000
 
 ## Built with
 
 ReactJS and Typescript
 
 ## Licença
-
-Esse projeto está sob a MIT License
+MIT License
