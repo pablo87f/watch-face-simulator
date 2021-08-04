@@ -46,10 +46,14 @@ function getTimeInfo(date: Date): DateTimeInfo {
 const WatchFace: React.FC<Props> = (props: Props) => {
   const startTimeInfo = getTimeInfo(new Date());
 
-  const { second: startSecond, minute: startMinute } = startTimeInfo;
+  const {
+    second: startSecond,
+    minute: startMinute,
+    hour: startHour,
+  } = startTimeInfo;
   const [timeInfo, setTimeInfo] = useState<DateTimeInfo>(startTimeInfo);
 
-  const [hourAngle, setHourAngle] = useState(0);
+  const [totalHours, setTotalHours] = useState(startHour);
   const [totalMinutes, setTotalMinutes] = useState(startMinute);
   const [totalSeconds, setTotalSeconds] = useState(startSecond);
 
@@ -63,7 +67,9 @@ const WatchFace: React.FC<Props> = (props: Props) => {
     if (totalSeconds > 0 && second === 0) {
       setTotalMinutes((prevTotalMinutes) => prevTotalMinutes + 1);
     }
-    setHourAngle(hour * 30);
+    if (totalMinutes > 0 && minute === 0 && second === 0) {
+      setTotalHours((prevTotalMinutes) => prevTotalMinutes + 1);
+    }
   }, []);
 
   useInterval(updateTime, 1000);
@@ -269,11 +275,14 @@ const WatchFace: React.FC<Props> = (props: Props) => {
           <Item
             key="hour"
             circleRadius={circleSize}
-            rotation={hour * 30}
+            rotation={totalHours * 30 + minute * 0.5}
             width={0.3}
             height={6}
             style={{ backgroundColor: "green" }}
-            coordinates={{ radius: 6, angle: hour * 30 }}
+            coordinates={{
+              radius: 6,
+              angle: totalHours * 30 + minute * 0.5,
+            }}
           ></Item>
           <Item
             key="second"
@@ -291,6 +300,7 @@ const WatchFace: React.FC<Props> = (props: Props) => {
       </div>
       <div>{totalSeconds}</div>
       <div>{totalMinutes}</div>
+      <div>{totalHours}</div>
     </>
   );
 };
