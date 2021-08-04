@@ -14,7 +14,7 @@ const HeartBitIndicator: React.FC<Props> = ({
       key="hour"
       circleRadius={circleRadius}
       rotation={0}
-      width={3}
+      width={4}
       height={1.8}
       style={{
         display: "flex",
@@ -22,8 +22,8 @@ const HeartBitIndicator: React.FC<Props> = ({
         flexDirection: "column",
       }}
       coordinates={{
-        radius: circleRadius + 4.5,
-        angle: 318,
+        radius: circleRadius + 3,
+        angle: 324,
       }}
     >
       <div
@@ -36,7 +36,7 @@ const HeartBitIndicator: React.FC<Props> = ({
           fontStretch: "bold",
         }}
       >
-        <img src={"/heart.svg"} alt="heart" style={{ width: 22 }} />
+        <img src={"/heart.svg"} alt="heart" style={{ width: 24 }} />
         {heartBitValue}
       </div>
     </Widget>

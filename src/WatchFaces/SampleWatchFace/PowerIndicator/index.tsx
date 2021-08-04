@@ -22,8 +22,8 @@ const PowerIndicator: React.FC<Props> = ({
         flexDirection: "column",
       }}
       coordinates={{
-        radius: circleRadius + 4.5,
-        angle: 43,
+        radius: circleRadius + 3,
+        angle: 35,
       }}
     >
       <div

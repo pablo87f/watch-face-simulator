@@ -29,8 +29,8 @@ const WatchFace: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="container" style={{ backgroundColor: "#2E2E2E" }}>
-        <Circle radius={circleSize} style={{ backgroundColor: "#2E2E2E" }}>
+      <div className="container" style={{ backgroundColor: "#1b1b1b" }}>
+        <Circle radius={circleSize} style={{ backgroundColor: "#1b1b1b" }}>
           {watchMinutes.map((wMinute) => (
             <MinuteIndicator
               minute={wMinute}

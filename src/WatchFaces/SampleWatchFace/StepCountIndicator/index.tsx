@@ -22,8 +22,8 @@ const StepCountIndicator: React.FC<Props> = ({
         flexDirection: "column",
       }}
       coordinates={{
-        radius: circleRadius + 4.5,
-        angle: 138,
+        radius: circleRadius + 3,
+        angle: 145,
       }}
     >
       <div
