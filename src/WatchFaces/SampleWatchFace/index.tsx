@@ -11,6 +11,7 @@ import MinuteIndicator from "./MinuteIndicator";
 import CenterBall from "./CenterBall";
 import HeartBitIndicator from "./HeartBitIndicator";
 import PowerIndicator from "./PowerIndicator";
+import StepCountIndicator from "./StepCountIndicator";
 
 type Props = {};
 
@@ -53,6 +54,7 @@ const WatchFace: React.FC<Props> = (props: Props) => {
           <CenterBall circleRadius={circleSize} />
           <HeartBitIndicator circleRadius={circleSize} heartBitValue={89} />
           <PowerIndicator circleRadius={circleSize} powerLevel={100} />
+          <StepCountIndicator circleRadius={circleSize} stepCount={8000} />
         </Circle>
       </div>
       {/* <div>
