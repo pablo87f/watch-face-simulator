@@ -1,18 +1,17 @@
-import React from "react";
 import Circle from "@Components/Circle";
-import Widget from "@Components/Widget";
+import React from "react";
 import { useWatch } from "../../hooks";
-import "./style.scss";
-import HourIndicator from "./HourIndicator";
-import MinuteHand from "./MinuteHand";
-import HourHand from "./HourHand";
-import SecondHand from "./SecondHand";
-import MinuteIndicator from "./MinuteIndicator";
 import CenterBall from "./CenterBall";
 import HeartBitIndicator from "./HeartBitIndicator";
-import PowerIndicator from "./PowerIndicator";
-import StepCountIndicator from "./StepCountIndicator";
+import HourHand from "./HourHand";
+import HourIndicator from "./HourIndicator";
+import MinuteHand from "./MinuteHand";
+import MinuteIndicator from "./MinuteIndicator";
 import PaiIndicator from "./PaiIndicator";
+import PowerIndicator from "./PowerIndicator";
+import SecondHand from "./SecondHand";
+import StepCountIndicator from "./StepCountIndicator";
+import "./style.scss";
 
 type Props = {};
 
@@ -24,7 +23,7 @@ const watchMinutes = Array.from(Array(60).keys());
 const WatchFace: React.FC<Props> = (props: Props) => {
   const { timeInfo, handAngles } = useWatch();
 
-  const { hour, minute, second } = timeInfo;
+  //const { hour, minute, second } = timeInfo;
   const { hourAngle, minuteAngle, secondAngle } = handAngles;
 
   return (
