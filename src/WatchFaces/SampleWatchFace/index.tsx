@@ -9,6 +9,7 @@ import HourHand from "./HourHand";
 import SecondHand from "./SecondHand";
 import MinuteIndicator from "./MinuteIndicator";
 import CenterBall from "./CenterBall";
+import HeartBitIndicator from "./HeartBitIndicator";
 
 type Props = {};
 
@@ -49,11 +50,12 @@ const WatchFace: React.FC<Props> = (props: Props) => {
           <HourHand circleRadius={circleSize} hourAngle={hourAngle} />
           <SecondHand circleRadius={circleSize} secondAngle={secondAngle} />
           <CenterBall circleRadius={circleSize} />
+          <HeartBitIndicator circleRadius={circleSize} heartBitValue={89} />
         </Circle>
       </div>
-      <div>
+      {/* <div>
         {hour}:{minute}:{second}
-      </div>
+      </div> */}
     </>
   );
 };
